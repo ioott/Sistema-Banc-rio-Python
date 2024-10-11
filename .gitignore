@@ -1,0 +1,17 @@
+# Ignore ambientes virtuais
+venv/
+Venv/
+ENV/
+env/
+env.bak/
+*.pyc
+__pycache__/
+
+# Ignore arquivos de configuração do VSCode
+.vscode/
+
+# Ignore arquivos de banco de dados SQLite
+*.sqlite3
+
+# Ignore logs
+*.log
