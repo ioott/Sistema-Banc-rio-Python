@@ -1,21 +1,16 @@
 from flask import Flask
 from .database import db
 from .routes import main
+from .config import Config
 
-def create_app():
+def create_app(config_class=Config):
     app = Flask(__name__)
 
-    # Configurações
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../app.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-    # Inicializar banco de dados
+    app.config.from_object(config_class)
     db.init_app(app)
 
-    # Registrar rotas
     app.register_blueprint(main)
 
-    # Criar o banco de dados (primeira vez)
     with app.app_context():
         db.create_all()
 
